@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="your_result">Ваш результат:</string>
+    <string name="correct_default">правильных</string>
+    <string name="correct_if_1">правильный</string>
+    <string name="answers_default">ответов</string>
+    <string name="answers_if_1">ответ</string>
+    <string name="answers_if_2__4">ответа</string>
+    <string name="out_of_7">из 7</string>
+    <string name="your_answer">Ваш ответ:</string>
+    <string name="share_result">Поделиться результатом</string>
+    <string name="restart">Перезапуск</string>
+    <string name="close_app">Закрыть приложение</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_question">What color is Waluigi\'s cap from Mario games?</string>
+    <string name="second_question">Guess the character: \"Eventually returns home after learning about the murder of his mother and joins to his old gang\":</string>
+    <string name="third_question">Release year of Minecraft (1.0):</string>
+    <string name="fourth_question">Fallout series developer:</string>
+    <string name="fifth_question">What platform was the first Call of Duty game released on?</string>
+    <string name="sixth_question">What is the name of the finishing move in Mortal Kombat?</string>
+    <string name="seventh_question">Where does Assassin\'s Creed 2 take place?</string>
+</resources>

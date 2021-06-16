@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_question_answer_one">Red</string>
+    <string name="first_question_answer_two">Green</string>
+    <string name="first_question_answer_three">Yellow</string>
+    <string name="first_question_answer_four">Purple</string>
+    <string name="first_question_answer_five">Blue</string>
+    <string name="second_question_answer_one">Tommy Vercetti</string>
+    <string name="second_question_answer_two">Trevor Philips</string>
+    <string name="second_question_answer_three">Carl Johnson</string>
+    <string name="second_question_answer_four">Max Payne</string>
+    <string name="second_question_answer_five">Niko Bellic</string>
+    <string name="third_question_answer_one" translatable="false">2010</string>
+    <string name="third_question_answer_two" translatable="false">2011</string>
+    <string name="third_question_answer_three" translatable="false">2012</string>
+    <string name="third_question_answer_four" translatable="false">2013</string>
+    <string name="third_question_answer_five" translatable="false">2009</string>
+    <string name="fourth_question_answer_one" translatable="false">Bethesda</string>
+    <string name="fourth_question_answer_two" translatable="false">Electronic Arts</string>
+    <string name="fourth_question_answer_three" translatable="false">Ubisoft</string>
+    <string name="fourth_question_answer_four" translatable="false">Rockstar Games</string>
+    <string name="fourth_question_answer_five" translatable="false">Gearbox Software</string>
+    <string name="fifth_question_answer_one" translatable="false">PS2</string>
+    <string name="fifth_question_answer_two" translatable="false">Xbox</string>
+    <string name="fifth_question_answer_three" translatable="false">Xbox 360</string>
+    <string name="fifth_question_answer_four" translatable="false">Wii</string>
+    <string name="fifth_question_answer_five" translatable="false">PC</string>
+    <string name="sixth_question_answer_one">Immortality</string>
+    <string name="sixth_question_answer_two">Natality</string>
+    <string name="sixth_question_answer_three">Finality</string>
+    <string name="sixth_question_answer_four">Fatality</string>
+    <string name="sixth_question_answer_five">Mortality</string>
+    <string name="seventh_question_answer_one">North America</string>
+    <string name="seventh_question_answer_two">Europe</string>
+    <string name="seventh_question_answer_three">Asia</string>
+    <string name="seventh_question_answer_four">Africa</string>
+    <string name="seventh_question_answer_five">South America</string>
+</resources>

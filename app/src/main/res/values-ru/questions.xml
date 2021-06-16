@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_question">Какого цвета кепка у Валуиджи из серии игр Mario?</string>
+    <string name="second_question">Отгадай персонажа: \"Узнав об убийстве матери, возвращается в родной город и присоединяется к своей бывшей банде\":</string>
+    <string name="third_question">Год выпуска Minecraft (1.0):</string>
+    <string name="fourth_question">Разработчик серии игр Fallout:</string>
+    <string name="fifth_question">На какой платформе была выпущена первая игра серии Call of Duty?</string>
+    <string name="sixth_question">Как называется добивающий приём в Mortal Kombat?</string>
+    <string name="seventh_question">Где происходит действие игры Assassin\'s Creed 2?</string>
+</resources>

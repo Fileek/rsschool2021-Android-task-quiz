@@ -17,4 +17,25 @@
     <color name="deep_purple_100">#d1c4e9</color>
     <color name="deep_purple_100_light">#fff7ff</color>
     <color name="deep_purple_100_dark">#a094b7</color>
+    <color name="lust">#E52521</color>
+    <color name="lust_light">#EA514D</color>
+    <color name="lust_dark">#B71E1A</color>
+    <color name="green_blue">#2577B1</color>
+    <color name="green_blue_light">#5192C1</color>
+    <color name="green_blue_dark">#1E5F8E</color>
+    <color name="green">#0DB50D</color>
+    <color name="green_light">#3DC33D</color>
+    <color name="green_dark">#0A900A</color>
+    <color name="icterine">#FEF265</color>
+    <color name="icterine_light">#FEF584</color>
+    <color name="icterine_dark">#CBC251</color>
+    <color name="middle_green">#528A63</color>
+    <color name="middle_green_dark">#426E4F</color>
+    <color name="middle_green_light">#75A182</color>
+    <color name="jonquil">#E3C519</color>
+    <color name="jonquil_dark">#B69E14</color>
+    <color name="jonquil_light">#E9D147</color>
+    <color name="lavender_gray">#C7CBD4</color>
+    <color name="lavender_gray_light">#D2D5DD</color>
+    <color name="lavender_gray_dark">#9FA2AA</color>
 </resources>

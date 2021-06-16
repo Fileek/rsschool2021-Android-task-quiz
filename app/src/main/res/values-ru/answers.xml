@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_question_answer_one">Красная</string>
+    <string name="first_question_answer_two">Зелёная</string>
+    <string name="first_question_answer_three">Жёлтая</string>
+    <string name="first_question_answer_four">Фиолетовая</string>
+    <string name="first_question_answer_five">Синяя</string>
+    <string name="second_question_answer_one">Томми Версетти</string>
+    <string name="second_question_answer_two">Тревор Филипс</string>
+    <string name="second_question_answer_three">Карл Джонсон</string>
+    <string name="second_question_answer_four">Макс Пэйн</string>
+    <string name="second_question_answer_five">Нико Беллик</string>
+    <string name="sixth_question_answer_one">Имморталити</string>
+    <string name="sixth_question_answer_two">Наталити</string>
+    <string name="sixth_question_answer_three">Финалити</string>
+    <string name="sixth_question_answer_four">Фаталити</string>
+    <string name="sixth_question_answer_five">Морталити</string>
+    <string name="seventh_question_answer_one">Северная Америка</string>
+    <string name="seventh_question_answer_two">Европа</string>
+    <string name="seventh_question_answer_three">Азия</string>
+    <string name="seventh_question_answer_four">Африка</string>
+    <string name="seventh_question_answer_five">Южная Америка</string>
+</resources>

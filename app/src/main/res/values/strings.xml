@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Quiz</string>
+    <string name="app_name" translatable="false">Game Quiz</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="submit" translatable="false">Submit</string>
+    <string name="previous" translatable="false">Previous</string>
+    <string name="your_result">Your result:</string>
+    <string name="correct_default">correct</string>
+    <string name="correct_if_1">correct</string>
+    <string name="answers_default">answers</string>
+    <string name="answers_if_1">answers</string>
+    <string name="answers_if_2__4">answers</string>
+    <string name="out_of_7">out of 7</string>
+    <string name="your_answer">Your answer:</string>
+    <string name="share_result">Share result</string>
+    <string name="restart">Restart</string>
+    <string name="close_app">Close App</string>
 </resources>
