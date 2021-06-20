@@ -12,14 +12,20 @@ class MainActivity : AppCompatActivity(), FragmentController {
 
     private var fragmentsCounter = 0
     private var addToBackStack = false
-    private var checkedButtons: MutableMap<Int, Int> = mutableMapOf()
-    private var starterIntent: Intent? = null
+    private var checkedButtons: MutableMap<Int, Int> = HashMap()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        starterIntent = intent
         setContentView(R.layout.activity_main)
-        openQuizFragment()
+        with(savedInstanceState) {
+            if (this != null) {
+                fragmentsCounter = getInt(QUESTION_NUMBER_KEY)
+                addToBackStack = getBoolean(ADD_TO_BACKSTACK_KEY)
+                @Suppress("Unchecked_cast")
+                checkedButtons = get(CHECKED_BUTTONS_MAP_KEY) as MutableMap<Int, Int>
+            } else
+                openQuizFragment()
+        }
     }
 
     override fun onBackPressed() {
@@ -28,6 +34,15 @@ class MainActivity : AppCompatActivity(), FragmentController {
             in 2..7 -> onPreviousButtonClicked()
             else -> onBackButtonClicked()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putAll(bundleOf(
+            Pair(QUESTION_NUMBER_KEY, fragmentsCounter),
+            Pair(ADD_TO_BACKSTACK_KEY, addToBackStack),
+            Pair(CHECKED_BUTTONS_MAP_KEY, checkedButtons),
+        ))
     }
 
     private fun openQuizFragment() {
@@ -66,7 +81,7 @@ class MainActivity : AppCompatActivity(), FragmentController {
 
     override fun onPreviousButtonClicked() {
         fragmentsCounter--
-        this.supportFragmentManager.popBackStack()
+        supportFragmentManager.popBackStack()
     }
 
     override fun onNextOrSubmitButtonClicked() {
@@ -88,9 +103,10 @@ class MainActivity : AppCompatActivity(), FragmentController {
     }
 
     override fun onBackButtonClicked() {
-        finish()
-        startActivity(starterIntent)
-        overridePendingTransition(0, 0)
+        while (--fragmentsCounter != 0) supportFragmentManager.popBackStack()
+        checkedButtons.clear()
+        addToBackStack = false
+        openQuizFragment()
     }
 
     override fun onExitButtonClicked() = finish()

@@ -1,5 +1,6 @@
 package com.rsschool.quiz
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +22,17 @@ class ResultsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
+        listener = context as FragmentController
         _binding = FragmentResultsBinding.inflate(inflater, container, false)
+
+        val nightModeFlags = requireContext().resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK
+        when (nightModeFlags) {
+            Configuration.UI_MODE_NIGHT_YES -> listener?.updateStatusBarColor(R.color.black)
+            Configuration.UI_MODE_NIGHT_NO -> listener?.updateStatusBarColor(R.color.white)
+            else -> listener?.updateStatusBarColor(R.color.lavender_gray)
+        }
+
         return binding.root
     }
 
@@ -30,7 +41,6 @@ class ResultsFragment : Fragment() {
 
         generateResult()
 
-        listener = context as FragmentController
         binding.resultView.text = correctAnswers.toString()
         binding.textView2.text = correctAnswersText
 

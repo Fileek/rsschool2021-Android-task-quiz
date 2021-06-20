@@ -1,72 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:textSize="40sp"
-        android:text="@string/your_result" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/resultView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="100sp"
-        tools:text="7" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:textSize="40sp"
+            android:text="@string/your_result" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="30sp"
-        tools:text="correct answers out of 7" />
+        <TextView
+            android:id="@+id/resultView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="100sp"
+            tools:text="7" />
 
-    <ImageButton
-        android:id="@+id/shareButton"
-        android:contentDescription="@string/share_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:color/transparent"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="30dp"
-        android:scaleX="3"
-        android:scaleY="3"
-        app:srcCompat="@drawable/ic_baseline_share_24" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            tools:text="correct answers out of 7" />
 
-    <ImageButton
-        android:id="@+id/backButton"
-        android:contentDescription="@string/restart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:color/transparent"
-        android:layout_margin="30dp"
-        android:scaleX="3"
-        android:scaleY="3"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+        <ImageButton
+            android:id="@+id/shareButton"
+            android:contentDescription="@string/share_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="30dp"
+            android:scaleX="3"
+            android:scaleY="3"
+            app:srcCompat="@drawable/ic_baseline_share_24" />
 
-    <ImageButton
-        android:id="@+id/exitButton"
-        android:contentDescription="@string/close_app"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@android:color/transparent"
-        android:layout_margin="30dp"
-        android:scaleX="3"
-        android:scaleY="3"
-        app:srcCompat="@drawable/ic_baseline_close_24" />
+        <ImageButton
+            android:id="@+id/backButton"
+            android:contentDescription="@string/restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_margin="30dp"
+            android:scaleX="3"
+            android:scaleY="3"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/exitButton"
+            android:contentDescription="@string/close_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:layout_margin="30dp"
+            android:scaleX="3"
+            android:scaleY="3"
+            app:srcCompat="@drawable/ic_baseline_close_24" />
+
+    </LinearLayout>
+</ScrollView>
