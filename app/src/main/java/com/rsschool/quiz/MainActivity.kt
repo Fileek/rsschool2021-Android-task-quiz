@@ -28,14 +28,6 @@ class MainActivity : AppCompatActivity(), FragmentController {
         }
     }
 
-    override fun onBackPressed() {
-        when (fragmentsCounter) {
-            1 -> super.onBackPressed()
-            in 2..7 -> onPreviousButtonClicked()
-            else -> onBackButtonClicked()
-        }
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putAll(bundleOf(
@@ -43,6 +35,14 @@ class MainActivity : AppCompatActivity(), FragmentController {
             Pair(ADD_TO_BACKSTACK_KEY, addToBackStack),
             Pair(CHECKED_BUTTONS_MAP_KEY, checkedButtons),
         ))
+    }
+
+    override fun onBackPressed() {
+        when (fragmentsCounter) {
+            1 -> super.onBackPressed()
+            in 2..7 -> onPreviousButtonClicked()
+            else -> onBackButtonClicked()
+        }
     }
 
     private fun openQuizFragment() {
@@ -68,12 +68,12 @@ class MainActivity : AppCompatActivity(), FragmentController {
         supportFragmentManager.commit { replace(R.id.container, resultsFragment) }
     }
 
-    /** Methods below are calling by QuizFragment */
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun updateStatusBarColor(color: Int) {
         window.statusBarColor = getColor(color)
     }
+
+    /** Methods below are calling by QuizFragment */
 
     override fun onRadioButtonSelected(checkedButton: Int) {
         checkedButtons[fragmentsCounter] = checkedButton

@@ -62,37 +62,39 @@ class QuizFragment : Fragment() {
         val questionObj = Question(questionNumber)
         val checkedButtonId = arguments?.getInt(CHECKED_BUTTON_KEY, -1) ?: -1
 
-        binding.toolbar.title = "Question $questionNumber"
-        binding.toolbar.setNavigationOnClickListener { listener?.onPreviousButtonClicked() }
+        with(binding) {
+            toolbar.title = "Question $questionNumber"
+            toolbar.setNavigationOnClickListener { listener?.onPreviousButtonClicked() }
 
-        when (questionNumber) {
-            1 -> {
-                binding.toolbar.navigationIcon = null
-                binding.previousButton.isInvisible = true
+            when (questionNumber) {
+                1 -> {
+                    toolbar.navigationIcon = null
+                    previousButton.isInvisible = true
+                }
+                7 -> nextButton.text = getString(R.string.submit)
             }
-            7 -> binding.nextButton.text = getString(R.string.submit)
+
+            if (checkedButtonId == -1) nextButton.isEnabled = false
+            else radioGroup.check(checkedButtonId)
+
+            radioGroup.setOnCheckedChangeListener { _, _ ->
+                nextButton.isEnabled = true
+                listener?.onRadioButtonSelected(radioGroup.checkedRadioButtonId)
+            }
+
+            with(questionObj) {
+                questionView.text = getString(question)
+                optionOne.text = getString(answers[0])
+                optionTwo.text = getString(answers[1])
+                optionThree.text = getString(answers[2])
+                optionFour.text = getString(answers[3])
+                optionFive.text = getString(answers[4])
+            }
+
+            previousButton.setOnClickListener { listener?.onPreviousButtonClicked() }
+
+            nextButton.setOnClickListener { listener?.onNextOrSubmitButtonClicked() }
         }
-
-        if (checkedButtonId == -1) binding.nextButton.isEnabled = false
-        else binding.radioGroup.check(checkedButtonId)
-
-        binding.radioGroup.setOnCheckedChangeListener { _, _ ->
-            binding.nextButton.isEnabled = true
-            listener?.onRadioButtonSelected(binding.radioGroup.checkedRadioButtonId)
-        }
-
-        with(questionObj) {
-            binding.question.text = getString(question)
-            binding.optionOne.text = getString(answers[0])
-            binding.optionTwo.text = getString(answers[1])
-            binding.optionThree.text = getString(answers[2])
-            binding.optionFour.text = getString(answers[3])
-            binding.optionFive.text = getString(answers[4])
-        }
-
-        binding.previousButton.setOnClickListener { listener?.onPreviousButtonClicked() }
-
-        binding.nextButton.setOnClickListener { listener?.onNextOrSubmitButtonClicked() }
     }
 
     override fun onDestroyView() {

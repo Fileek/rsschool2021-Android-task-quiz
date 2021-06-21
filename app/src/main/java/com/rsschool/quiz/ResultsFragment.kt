@@ -41,14 +41,16 @@ class ResultsFragment : Fragment() {
 
         generateResult()
 
-        binding.resultView.text = correctAnswers.toString()
-        binding.textView2.text = correctAnswersText
+        with(binding) {
+            resultView.text = correctAnswers.toString()
+            textView2.text = correctAnswersText
 
-        binding.shareButton.setOnClickListener { listener?.onShareButtonClicked(sharedText) }
+            shareButton.setOnClickListener { listener?.onShareButtonClicked(sharedText) }
 
-        binding.backButton.setOnClickListener { listener?.onBackButtonClicked() }
+            backButton.setOnClickListener { listener?.onBackButtonClicked() }
 
-        binding.exitButton.setOnClickListener { listener?.onExitButtonClicked() }
+            exitButton.setOnClickListener { listener?.onExitButtonClicked() }
+        }
     }
 
     private fun generateResult() {
