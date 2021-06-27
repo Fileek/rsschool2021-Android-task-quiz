@@ -2,6 +2,7 @@ package com.rsschool.quiz
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,8 +15,6 @@ class ResultsFragment : Fragment() {
     private val binding get() = _binding!!
     private var listener: FragmentController? = null
     private var correctAnswers = 0
-    private var correctAnswersText = ""
-    private var sharedText = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,27 +24,23 @@ class ResultsFragment : Fragment() {
         listener = context as FragmentController
         _binding = FragmentResultsBinding.inflate(inflater, container, false)
 
-        val nightModeFlags = requireContext().resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK
-        when (nightModeFlags) {
-            Configuration.UI_MODE_NIGHT_YES -> listener?.updateStatusBarColor(R.color.black)
-            Configuration.UI_MODE_NIGHT_NO -> listener?.updateStatusBarColor(R.color.white)
-            else -> listener?.updateStatusBarColor(R.color.lavender_gray)
-        }
-
+        setTheme()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        generateResult()
+        val selectedAnswers = calculateAndReturnSelected()
+        val correctAnswersText = selectCorrectAnswersText()
+        val resultsText =
+            "${getString(R.string.your_result)} $correctAnswers $correctAnswersText $selectedAnswers"
 
-        with(binding) {
+        binding.apply {
             resultView.text = correctAnswers.toString()
             textView2.text = correctAnswersText
 
-            shareButton.setOnClickListener { listener?.onShareButtonClicked(sharedText) }
+            shareButton.setOnClickListener { listener?.onShareButtonClicked(resultsText) }
 
             backButton.setOnClickListener { listener?.onBackButtonClicked() }
 
@@ -53,38 +48,49 @@ class ResultsFragment : Fragment() {
         }
     }
 
-    private fun generateResult() {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-        @Suppress("Unchecked_cast")
-        val checkedButtons = arguments?.get(CHECKED_BUTTONS_MAP_KEY) as Map<Int, Int>
-        var chosenAnswers = ""
-
-        for ((questionNumber, selectedButton) in checkedButtons) {
-            with(Question(questionNumber)) {
-                if (selectedButton == correctButtonId) correctAnswers++
-                chosenAnswers += """
-                    |
-                    |
-                    |$questionNumber) ${getString(question)}
-                    |${getString(R.string.your_answer)} ${getString(answersMap[selectedButton] ?: -1)}""".trimMargin()
-            }
+    /** Choose status bar color depends on day/night mode on device */
+    private fun setTheme() {
+        val nightModeFlags = requireContext().resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK
+        when (nightModeFlags) {
+            Configuration.UI_MODE_NIGHT_YES -> listener?.updateStatusBarColor(R.color.black)
+            Configuration.UI_MODE_NIGHT_NO -> listener?.updateStatusBarColor(R.color.white)
+            else -> listener?.updateStatusBarColor(R.color.lavender_gray)
         }
+    }
 
-        /** Choose right russian localization for words "correct" and "answers" */
-        correctAnswersText = "${
+    /** Choose right russian localization for words "correct" and "answers" */
+    private fun selectCorrectAnswersText(): String {
+        return "${
             when (correctAnswers) {
                 1 -> "${getString(R.string.correct_if_1)} ${getString(R.string.answers_if_1)}"
                 in 2..4 -> "${getString(R.string.correct_default)} ${getString(R.string.answers_if_2__4)}"
                 else -> "${getString(R.string.correct_default)} ${getString(R.string.answers_default)}"
             }
         } ${getString(R.string.out_of_7)}"
-
-        sharedText =
-            "${getString(R.string.your_result)} $correctAnswers $correctAnswersText $chosenAnswers"
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    /** Calculate correct answers and return selected answers */
+    private fun calculateAndReturnSelected(): String {
+        @Suppress("Unchecked_cast")
+        val checkedButtons = arguments?.get(CHECKED_BUTTONS_MAP_KEY) as Map<Int, Int>
+        var selectedAnswers = ""
+
+        for ((questionNumber, selectedButton) in checkedButtons) {
+            with(Question(questionNumber)) {
+                if (selectedButton == correctButtonId) correctAnswers++
+                selectedAnswers += """
+                    |
+                    |
+                    |$questionNumber) ${getString(question)}
+                    |${getString(R.string.your_answer)} ${getString(answersMap[selectedButton] ?: -1)}""".trimMargin()
+            }
+        }
+        return selectedAnswers
     }
 }

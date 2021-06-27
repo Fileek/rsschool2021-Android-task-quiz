@@ -10,7 +10,7 @@ interface FragmentController {
 
     fun onNextOrSubmitButtonClicked()
 
-    fun onShareButtonClicked(sharedText: String)
+    fun onShareButtonClicked(resultsText: String)
 
     fun onBackButtonClicked()
 

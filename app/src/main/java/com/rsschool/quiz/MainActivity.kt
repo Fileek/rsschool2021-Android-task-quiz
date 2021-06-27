@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity(), FragmentController {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putAll(bundleOf(
-            Pair(QUESTION_NUMBER_KEY, fragmentsCounter),
-            Pair(ADD_TO_BACKSTACK_KEY, addToBackStack),
-            Pair(CHECKED_BUTTONS_MAP_KEY, checkedButtons),
+            QUESTION_NUMBER_KEY to fragmentsCounter,
+            ADD_TO_BACKSTACK_KEY to addToBackStack,
+            CHECKED_BUTTONS_MAP_KEY to checkedButtons,
         ))
     }
 
@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity(), FragmentController {
         val quizFragment: Fragment = QuizFragment()
         quizFragment.arguments =
             bundleOf(
-                Pair(QUESTION_NUMBER_KEY, ++fragmentsCounter),
-                Pair(CHECKED_BUTTON_KEY, checkedButtons[fragmentsCounter])
+                QUESTION_NUMBER_KEY to ++fragmentsCounter,
+                CHECKED_BUTTON_KEY to checkedButtons[fragmentsCounter]
             )
 
         supportFragmentManager.commit {
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), FragmentController {
 
     private fun openResultsFragment() {
         val resultsFragment: Fragment = ResultsFragment()
-        val args = bundleOf(Pair(CHECKED_BUTTONS_MAP_KEY, checkedButtons))
+        val args = bundleOf(CHECKED_BUTTONS_MAP_KEY to checkedButtons)
         resultsFragment.arguments = args
         fragmentsCounter++
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), FragmentController {
         window.statusBarColor = getColor(color)
     }
 
-    /** Methods below are calling by QuizFragment */
+    // Methods below are calling by QuizFragment
 
     override fun onRadioButtonSelected(checkedButton: Int) {
         checkedButtons[fragmentsCounter] = checkedButton
@@ -88,12 +88,12 @@ class MainActivity : AppCompatActivity(), FragmentController {
         if (fragmentsCounter != 7) openQuizFragment() else openResultsFragment()
     }
 
-    /** Methods below are calling by ResultsFragment */
+    // Methods below are calling by ResultsFragment
 
-    override fun onShareButtonClicked(sharedText: String) {
+    override fun onShareButtonClicked(resultsText: String) {
         val sendIntent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, sharedText)
+            putExtra(Intent.EXTRA_TEXT, resultsText)
             putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name))
             type = "text/plain"
         }

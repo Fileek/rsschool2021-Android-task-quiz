@@ -69,11 +69,11 @@ data class Question(val questionNumber: Int) {
     val answers: List<Int> get() = answersArray[questionNumber - 1]
     val answersMap: Map<Int, Int>
         get() = mapOf(
-            Pair(R.id.option_one, answers[0]),
-            Pair(R.id.option_two, answers[1]),
-            Pair(R.id.option_three, answers[2]),
-            Pair(R.id.option_four, answers[3]),
-            Pair(R.id.option_five, answers[4]),
+            R.id.option_one to answers[0],
+            R.id.option_two to answers[1],
+            R.id.option_three to answers[2],
+            R.id.option_four to answers[3],
+            R.id.option_five to answers[4],
         )
     val correctButtonId
         get() =
