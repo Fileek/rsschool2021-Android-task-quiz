@@ -1,13 +1,16 @@
-package com.rsschool.quiz
+package com.rsschool.quiz.result
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.rsschool.quiz.R
 import com.rsschool.quiz.databinding.FragmentResultsBinding
+import com.rsschool.quiz.main.CHECKED_BUTTONS_MAP_KEY
+import com.rsschool.quiz.main.FragmentController
+import com.rsschool.quiz.question.Question
 
 class ResultsFragment : Fragment() {
 
@@ -46,11 +49,6 @@ class ResultsFragment : Fragment() {
 
             exitButton.setOnClickListener { listener?.onExitButtonClicked() }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     /** Choose status bar color depends on day/night mode on device */
@@ -92,5 +90,10 @@ class ResultsFragment : Fragment() {
             }
         }
         return selectedAnswers
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

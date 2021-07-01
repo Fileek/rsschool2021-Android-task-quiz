@@ -9,6 +9,10 @@
     <string name="out_of_7">из 7</string>
     <string name="your_answer">Ваш ответ:</string>
     <string name="share_result">Поделиться результатом</string>
-    <string name="restart">Перезапуск</string>
+    <string name="restart">Перезапустить</string>
     <string name="close_app">Закрыть приложение</string>
+    <string name="click_back_again_to_exit">Пожалуйста, нажмите НАЗАД ещё раз чтобы выйти</string>
+    <string name="exit_or_restart">Хотите перезапустить квиз или выйти?</string>
+    <string name="exit">Выйти</string>
+    <string name="cancel">Отменить</string>
 </resources>

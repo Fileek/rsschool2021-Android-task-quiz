@@ -14,4 +14,8 @@
     <string name="share_result">Share result</string>
     <string name="restart">Restart</string>
     <string name="close_app">Close App</string>
+    <string name="click_back_again_to_exit">Please click BACK again to exit</string>
+    <string name="exit_or_restart">Do you want to restart quiz or exit?</string>
+    <string name="exit">Exit</string>
+    <string name="cancel">Cancel</string>
 </resources>

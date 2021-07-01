@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quiz.First">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

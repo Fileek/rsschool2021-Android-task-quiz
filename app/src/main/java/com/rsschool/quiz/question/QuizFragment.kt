@@ -1,4 +1,4 @@
-package com.rsschool.quiz
+package com.rsschool.quiz.question
 
 import android.os.Bundle
 import android.view.ContextThemeWrapper
@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import androidx.core.view.forEach
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
+import com.rsschool.quiz.R
 import com.rsschool.quiz.databinding.FragmentQuizBinding
+import com.rsschool.quiz.main.*
 
 class QuizFragment : Fragment() {
 
@@ -16,6 +19,7 @@ class QuizFragment : Fragment() {
     private val binding get() = _binding!!
     private var listener: FragmentController? = null
     private var questionNumber = 0
+    private var checkedButtonId = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,21 +28,13 @@ class QuizFragment : Fragment() {
     ): View {
         listener = context as FragmentController
         questionNumber = arguments?.getInt(QUESTION_NUMBER_KEY) ?: 0
+        checkedButtonId = arguments?.getInt(CHECKED_BUTTON_KEY, -1) ?: -1
+        val anyButtonChecked = checkedButtonId != -1
 
         setTheme(inflater, container)
+        if (anyButtonChecked) setPreviouslyCheckedButton()
+
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setToolbar()
-        setButtons()
-        setQuestionAndAnswers()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     /** Choose theme and status bar color */
@@ -71,6 +67,20 @@ class QuizFragment : Fragment() {
         listener?.updateStatusBarColor(colors[questionNumber - 1])
     }
 
+    private fun setPreviouslyCheckedButton() {
+        binding.radioGroup.forEach { option ->
+            option as RadioButton
+            if (option.id == checkedButtonId) option.isChecked = true
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setToolbar()
+        setButtons()
+        setQuestionAndAnswers()
+    }
+
     private fun setToolbar() {
         binding.apply {
             toolbar.title = "Question $questionNumber"
@@ -81,7 +91,6 @@ class QuizFragment : Fragment() {
     }
 
     private fun setButtons() {
-        val checkedButtonId = arguments?.getInt(CHECKED_BUTTON_KEY, -1) ?: -1
         val noButtonChecked = checkedButtonId == -1
 
         binding.apply {
@@ -96,7 +105,6 @@ class QuizFragment : Fragment() {
 
             nextButton.setOnClickListener { listener?.onNextOrSubmitButtonClicked() }
 
-            radioGroup.check(checkedButtonId)
             radioGroup.setOnCheckedChangeListener { _, _ ->
                 nextButton.isEnabled = true
                 listener?.onRadioButtonSelected(radioGroup.checkedRadioButtonId)
@@ -108,11 +116,16 @@ class QuizFragment : Fragment() {
         binding.apply {
             with(Question(questionNumber)) {
                 questionView.text = getString(question)
-                for (i in 0 until radioGroup.childCount) {
-                    val option = radioGroup.getChildAt(i) as RadioButton
-                    option.text = getString(answers[i])
+                radioGroup.forEach { option ->
+                    option as RadioButton
+                    option.text = getString(answers[radioGroup.indexOfChild(option)])
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

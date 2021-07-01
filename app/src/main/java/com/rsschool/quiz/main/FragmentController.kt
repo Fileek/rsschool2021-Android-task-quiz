@@ -1,12 +1,12 @@
-package com.rsschool.quiz
+package com.rsschool.quiz.main
 
 interface FragmentController {
 
     fun updateStatusBarColor(color: Int)
 
-    fun onRadioButtonSelected(checkedButton: Int)
-
     fun onPreviousButtonClicked()
+
+    fun onRadioButtonSelected(checkedButton: Int)
 
     fun onNextOrSubmitButtonClicked()
 

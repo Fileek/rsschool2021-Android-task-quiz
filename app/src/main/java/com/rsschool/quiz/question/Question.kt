@@ -1,4 +1,6 @@
-package com.rsschool.quiz
+package com.rsschool.quiz.question
+
+import com.rsschool.quiz.R
 
 data class Question(val questionNumber: Int) {
 
