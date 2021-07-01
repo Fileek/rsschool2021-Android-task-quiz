@@ -40,4 +40,8 @@
         <item name="colorPrimary">@color/lavender_gray_light</item>
         <item name="colorSecondary">@color/lavender_gray</item>
     </style>
+
+    <style name="Theme.Quiz.Dialog" parent="Theme.Quiz">
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>

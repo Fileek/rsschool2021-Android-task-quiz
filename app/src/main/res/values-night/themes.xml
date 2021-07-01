@@ -1,0 +1,11 @@
+<resources>
+    <style name="Theme.Quiz" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="Theme.Quiz.Dialog" parent="Theme.Quiz">
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

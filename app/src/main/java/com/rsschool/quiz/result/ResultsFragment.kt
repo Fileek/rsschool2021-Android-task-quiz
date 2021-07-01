@@ -31,6 +31,17 @@ class ResultsFragment : Fragment() {
         return binding.root
     }
 
+    /** Choose status bar color depends on day/night mode on device */
+    private fun setTheme() {
+        val nightModeFlags = requireContext().resources.configuration.uiMode and
+                Configuration.UI_MODE_NIGHT_MASK
+        when (nightModeFlags) {
+            Configuration.UI_MODE_NIGHT_YES -> listener?.updateStatusBarColor(R.color.black)
+            Configuration.UI_MODE_NIGHT_NO -> listener?.updateStatusBarColor(R.color.white)
+            else -> listener?.updateStatusBarColor(R.color.lavender_gray)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -48,17 +59,6 @@ class ResultsFragment : Fragment() {
             backButton.setOnClickListener { listener?.onBackButtonClicked() }
 
             exitButton.setOnClickListener { listener?.onExitButtonClicked() }
-        }
-    }
-
-    /** Choose status bar color depends on day/night mode on device */
-    private fun setTheme() {
-        val nightModeFlags = requireContext().resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK
-        when (nightModeFlags) {
-            Configuration.UI_MODE_NIGHT_YES -> listener?.updateStatusBarColor(R.color.black)
-            Configuration.UI_MODE_NIGHT_NO -> listener?.updateStatusBarColor(R.color.white)
-            else -> listener?.updateStatusBarColor(R.color.lavender_gray)
         }
     }
 
